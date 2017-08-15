@@ -1,4 +1,7 @@
-import main
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 import os
 import requests
 from urllib.request import urlopen as uReq
@@ -6,16 +9,12 @@ from bs4 import BeautifulSoup as soup
 from os import system
 
 
-
 def start_ticker():
 	system('cls')
 	print('%9s  %9s  %9s  %9s  %15s  %15s'%('Ticker','Price','Open','Close','Volume','Ave. Volume'))
 	print('-----------------------------------------------------------------------------')
-	with open('../data/ticker.txt','r') as f:
-		# f_contents = f.readline()
-		# print(f_contents, end='')
-		# f_contents = f.readline()
-		# print(f_contents, end='')
+	with open('ticker.txt','r') as f:
+		tmp = f.readline()
 		for line in f:
 			try:
 				ticker = line.strip('\n')
@@ -29,14 +28,13 @@ def start_ticker():
 				volumn = page_soup.findAll("td",{"data-test":"TD_VOLUME-value"})
 				aveVolumn = page_soup.findAll("td",{"data-test":"AVERAGE_VOLUME_3MONTH-value"})
 				print('%9s  %9s  %9s  %9s  %15s  %15s'%(ticker,curPrice[0].text,openPrice[0].text,closePrice[0].text,volumn[0].text,aveVolumn[0].text))
-				# print('Close price: ', closePrice[0].text)
 			except:
 				print(ticker, ': Invalid ticker')
 		print()
 		pass
 
 def add_ticker(stock):
-	with open('../data/ticker.txt','a') as f:
+	with open('ticker.txt','a') as f:
 		request = requests.get('https://finance.yahoo.com/quote/'+stock+'?p='+stock)
 		if request.status_code == 200:
 			f.write('\n'+stock)
@@ -45,14 +43,19 @@ def add_ticker(stock):
 
 
 def remove_ticker(stock):
-	with open('../data/ticker.txt', 'r') as rf:
-		with open('../data/ticker_tmp.txt', 'w') as wf:
+	with open('ticker.txt', 'r') as rf:
+		with open('ticker_tmp.txt', 'w') as wf:
 			for line in rf:
 				curTicker = line.strip('\n')
 				print('->',curTicker)
 				if stock != curTicker:
 					wf.write(curTicker+'\n')
-	os.remove('../data/ticker.txt')
-	os.rename('../data/ticker_tmp.txt', '../data/ticker.txt')
+	os.remove('ticker.txt')
+	os.rename('ticker_tmp.txt', 'ticker.txt')
 
-	# 	
+
+def create_new():
+	script_dir = os.path.dirname(__file__)
+	tickerPath = os.path.join(os.getcwd(),'ticker.txt')
+	f = open(tickerPath, 'w')
+	f.close()
