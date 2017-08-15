@@ -6,7 +6,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 ## About:
-This is an open source web scrapping python package. The package helps stock broker to take a quick look at the open, the previous close, the volume, and the average volume of any stock. This package does not include graphical analysis or press releases. This package includes bs4 for web scrapping and argparse for options
+This is an open source web scraping python package. The package helps stock broker to take a quick look at the open, the previous close, the volume, and the average volume of any stock. This package does not include graphical analysis or press releases. This package includes bs4 for web scraping and argparse for options
 
 ## Requirements:
 [Python 3.6](https://www.python.org/downloads/release/python-361/)
@@ -34,5 +34,5 @@ This is an open source web scrapping python package. The package helps stock bro
 - ```yh-ticker --add <symbol>```. Adds the symbol of the stock to the text file, replace <symbol> with your desire stock symbol, e.g. ```yh-ticker --add GOOGL```
 - ```yh-ticker --remove <symbol>```. Removes the symbol of the stock from the text file, replace <symbol> with your desire stock symbol, e.g. ```yh-ticker --remove GOOGL```
 - ```yh-ticker --create list```. Creates new text file for tickers. Users must initiate this command before add/remove/start tickers. You can also complete remove all tickers by this command as well
-- ```yh-ticker --start ticker```. Start scrapping the current tickers' information and display it on the terminal from Yahoo Finance website.
+- ```yh-ticker --start ticker```. Start scraping the current tickers' information and display it on the terminal from Yahoo Finance website.
 - ```yh-ticker -h```. Get information about options
