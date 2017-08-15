@@ -14,7 +14,7 @@ This is an open source web scraping python package. The package helps stock brok
 [pip](https://bootstrap.pypa.io/get-pip.py)
 
 ### pip installation:
-- Go [https://bootstrap.pypa.io/get-pip.py](https://bootstrap.pypa.io/get-pip.py)
+- Go to [https://bootstrap.pypa.io/get-pip.py](https://bootstrap.pypa.io/get-pip.py)
 - Right click, "Save as...", choose the target location
 - ```cd``` to that directory. type ```python get-pip.py```
 - Done
